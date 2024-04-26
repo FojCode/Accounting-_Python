@@ -1,0 +1,33 @@
+# Weighted Average Cost of Capital in Python
+def calculate_wacc(cost_of_equity, cost_of_debt, market_value_of_equity, market_value_of_debt, tax_rate): Calculate the Weighted Average Cost of Capital 
+    :param cost_of_equity: The cost of equity as a decimal
+    :param cost_of_debt: The cost of debt as a decimal
+    :param market_value_of_equity: The market value of equity
+    :param market_value_of_debt: The market value of debt
+    :param tax_rate: The corporate tax rate as a decimal
+    :return: The WACC as a decimal
+    # Calculate the weights of equity and debt
+    total_value = market_value_of_equity + market_value_of_debt
+    weight_of_equity = market_value_of_equity / total_value
+    weight_of_debt = market_value_of_debt / total_value
+
+    # Calculate the after-tax cost of debt
+    after_tax_cost_of_debt = cost_of_debt * (1 - tax_rate)
+
+    # Calculate WACC
+    wacc = (weight_of_equity * cost_of_equity) + (weight_of_debt * after_tax_cost_of_debt)
+    return wacc
+
+# Example usage:
+# Assume the following values for the variables
+cost_of_equity = 0.08  # 8%
+cost_of_debt = 0.05  # 5%
+market_value_of_equity = 600000  # R600,000
+market_value_of_debt = 400000  # R400,000
+tax_rate = 0.30  # 30%
+
+# Calculate WACC
+wacc = calculate_wacc(cost_of_equity, cost_of_debt, market_value_of_equity, market_value_of_debt, tax_rate)
+
+# Print the result
+print(f"The Weighted Average Cost of Capital (WACC) is: {wacc:.2%}")
